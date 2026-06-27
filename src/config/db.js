@@ -5,7 +5,9 @@ const connectDB = async () => {
     const { MONGO_URI } = process.env;
 
     if (!MONGO_URI) {
-      throw new Error("The MongoDB connection string is not added in environment variables");
+      throw new Error(
+        "The MongoDB connection string is not added in environment variables",
+      );
     }
 
     const conn = await mongoose.connect(MONGO_URI);
