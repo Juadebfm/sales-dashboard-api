@@ -1,8 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-
-
-
+import { generateToken } from "../utils/generateToken.js";
 
 // POST /register/signup
 export async function register(req, res) {
@@ -30,8 +28,13 @@ export async function register(req, res) {
     // now we create user and put it in the DB
     const user = await User.create({ name, email, password: hashed });
 
-    // actual response to send out to FE request order
-    res.status(201).json({ id: user._id, name: user.name, email: user.email });
+    const token = generateToken(user._id);
+
+    // actual response now changes to include the token to send out to FE request order
+    res.status(201).json({
+      token,
+      user: { id: user._id, name: user.name, email: user.email },
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

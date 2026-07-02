@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      unique: true,
     },
     isActive: {
       type: Boolean,
@@ -103,6 +102,17 @@ const userSchema = new mongoose.Schema(
     },
   },
   { timestamps: true },
+);
+
+// Only enforce uniqueness when a phone number is actually stored.
+userSchema.index(
+  { phone: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      phone: { $type: "string" },
+    },
+  },
 );
 
 export default mongoose.model("User", userSchema);
