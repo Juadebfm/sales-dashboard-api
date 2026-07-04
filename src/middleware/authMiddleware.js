@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-import User from "../models/User";
+import User from "../models/User.js";
+import { ApiError } from "../utils/ApiError.js";
 
 export async function protect(req, res, next) {
   try {
@@ -7,7 +8,7 @@ export async function protect(req, res, next) {
     const header = req.headers.authorization;
     // check if token is in headers:authorization, if not throw the error
     if (!header?.startsWith("Bearer ")) {
-      return res.status(401).json({ message: "Not Authorized, No Token" });
+      throw new ApiError(401, "Not Authorized, No Token");
     }
 
     // if the token is present
@@ -18,10 +19,14 @@ export async function protect(req, res, next) {
     req.user = await User.findById(decoded.id); //password hidden by default due to the select false.
 
     if (!req.user) {
-      return res.status(401).json({ message: "User Not Found" });
+      throw new ApiError(401, "User Not Found");
     }
+
     next();
   } catch (error) {
-    res.status(401).json({ message: "Not Authorized, token failed" });
+    if (error instanceof ApiError) return next(error);
+
+    console.error(error);
+    next(new ApiError(401, "Not Authorized, token failed"));
   }
 }

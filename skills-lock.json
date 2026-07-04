@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "backend-system-design": {
+      "source": "Juadebfm/junior-skills",
+      "sourceType": "github",
+      "skillPath": "skills/backend-system-design/SKILL.md",
+      "computedHash": "98a65c376a8d8ca728b16ac1ddef46c392521475434b9316dcf5a35a3eb92ef0"
+    },
+    "grow-project": {
+      "source": "Juadebfm/junior-skills",
+      "sourceType": "github",
+      "skillPath": "skills/grow-project/SKILL.md",
+      "computedHash": "c78837dba9c40c8a4e24383d6c29bb9fa5547014652368b99670116fe5a7f7dc"
+    },
+    "security-check": {
+      "source": "Juadebfm/junior-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security-check/SKILL.md",
+      "computedHash": "ed476759aab50f87cba25b99e5af52d213d5be5cab80f33faac778d8577ab914"
+    },
+    "standards-check": {
+      "source": "Juadebfm/junior-skills",
+      "sourceType": "github",
+      "skillPath": "skills/standards-check/SKILL.md",
+      "computedHash": "4fe551666a51c0d94b6846c60dd333ac579b8d81988aa40bc2df09668683a0e7"
+    },
+    "test-small": {
+      "source": "Juadebfm/junior-skills",
+      "sourceType": "github",
+      "skillPath": "skills/test-small/SKILL.md",
+      "computedHash": "b9af278e1d13cc3f666bdd8bbb31fb769d7a8f3ef6dc408c316bf47a1e69a568"
+    }
+  }
+}
